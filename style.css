@@ -1,0 +1,95 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+ul,li{
+	list-style: none;
+}
+div{
+	display:block;
+}
+.top{
+	height: 25px;
+	background:rgba(204,204,204);
+	overflow: hidden;
+}
+.top>img{
+	float: left;
+	margin-left: 260px;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+.container{
+	float: left;
+	width: 960px;
+	height: 25px;
+	font-size: 12px;
+	color: red;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+.topText{
+	width: 400px;
+	position: absolute;
+	height: 25px;
+	line-height: 25px;
+	left: 1000px;
+}
+.box{
+	width: 1200px;
+	height: 380px;
+	border: 1px red solid;
+	margin: 20px auto;
+	position: relative;
+	overflow: hidden;
+}
+.slider{
+	width: 8400px;
+	position: absolute;
+	left: -1200px;
+	top: 0;
+}
+.img{
+	width: 1200px;
+	overflow: hidden;
+	float: left;
+}
+#left{
+	left: 30px;
+}
+#right{
+	right: 30px;
+}
+.box>span{
+	display: block;
+	width: 30px;
+	height: 50px;
+	text-align: : center;
+	cursor: pointer;
+	top: 175px;
+	line-height: 50px;
+	background:rgba(255,0,0);
+	font-size: 30px;
+	position: absolute;
+	opacity: 0;
+}
+.nav{
+	position:absolute ;
+	left: 500px;
+	bottom: 20px;
+}
+.nav>li{
+	float:left ;
+	width: 20px;
+	height: 20px;
+	background: #ccc;
+	cursor: pointer;
+	margin: 0 10px;
+	border-radius: 50%;
+	text-align: center;
+}
+.nav .active{
+	background:red;
+	color: #fff;
+}

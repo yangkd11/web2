@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="js/animate.js"></script>
+</head>
+<body>
+	<div class="top">
+		<img src="images/a15.png">
+		<div class="container">
+			<div class="topText" id="topText">[温馨提示]最近有不少不法分子在网上骗人，请大家注意！！！</div>
+		</div>
+	</div>
+	<div class="box" id="box">
+		<div class="slider" id="slider">
+			<div class="img"><img src="images/b5.png"></div>
+			<div class="img"><img src="images/b1.png"></div>
+			<div class="img"><img src="images/b2.png"></div>
+			<div class="img"><img src="images/b3.png"></div>
+			<div class="img"><img src="images/b4.png"></div>
+			<div class="img"><img src="images/b5.png"></div>
+			<div class="img"><img src="images/b1.png"></div>
+		</div>
+		<span id="left"><</span>
+		<span id="right">></span>
+		<ul class="nav" id="nav"> 
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		</ul>
+	</div>
+</body>
+<script>		
+	var box = document.getElementById("box");
+	var topText = document.getElementById("topText");
+	var navList = document.getElementById("nav").children;
+	var slider = document.getElementById("slider");
+	var left = document.getElementById("left");
+	var right = document.getElementById("right");
+	var number = 1;
+	var time = 1000;
+	setInterval(function(){
+		time--;
+		topText.style.left=time+"px";
+		if(time < -350){
+			time = 1000;		
+		}
+	},10);
+	function next(){
+		number++;
+		navChange();
+		animate(slider,{left:-1200*number},function(){
+			if(number === 6){
+				slider.style.left = "-1200px";
+				number = 1;
+			}
+		});
+	}
+	function prev(){
+		number--;
+		navChange();
+		animate(slider,{left:-1200*number},function(){
+			if(number === 0){
+				slider.style.left = "-6000px";
+				number = 5;
+			}
+		});
+	}
+	var timer = setInterval(next,2000);
+	box.onmouseover = function(){
+		animate(left,{opacity:50});
+		animate(right,{opacity:50});
+		clearInterval(timer);
+	}
+	box.onmouseout = function(){
+		animate(left,{opacity:0});
+		animate(right,{opacity:0});
+		timer = setInterval(next,2000);
+	}
+	right.onclick = next;
+	left.onclick = prev;
+	for(var i = 0;i<navList.length;i++){
+		navList[i].index1 = i;
+		navList[i].onclick = function(){
+			number = this.index1 + 1;
+			navChange();
+			animate(slider,{left:-1200*number});
+		}
+	}
+	function navChange(){
+		for(var i = 0;i<navList.length;i++){
+			navList[i].className = '';
+		}
+		if(number == 6){
+			navList[0].className = 'active';
+		}
+		else if(number == 0){
+			navList[4].className = 'active';
+		}
+		else{
+			navList[number-1].className = 'active';
+		}
+	}
+</script>
+</html>
